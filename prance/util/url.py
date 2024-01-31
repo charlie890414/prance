@@ -138,9 +138,12 @@ def split_url_reference(base_url, reference):
         obj_path = obj_path[1:]
 
     # Normalize the object path by substituting ~1 and ~0 respectively.
+    # Also, substitute %7B and %7D for { and } respectively.
     def _normalize(path):
         path = path.replace("~1", "/")
         path = path.replace("~0", "~")
+        path = path.replace("%7B", "{")
+        path = path.replace("%7D", "}")
         return path
 
     obj_path = [_normalize(p) for p in obj_path]
