@@ -132,7 +132,7 @@ class BaseParser(mixins.YAMLMixin, mixins.JSONMixin):
             from .util.url import fetch_url
 
             encoding = self.options.get("encoding", None)
-            self.specification = fetch_url(self.url, encoding=encoding, strict=strict)
+            self.specification = fetch_url(self.url, cache={}, encoding=encoding, strict=strict)
 
         # If we have a spec string, try to parse it.
         if self._spec_string:
